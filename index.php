@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--Maaterial Icons -->
+    <!--Material Icons -->
     <link href = "https://fonts.googleapis.com/iconfamily=Material+icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
    <!-- STYLE SHEET -->
     <?php
@@ -132,7 +133,19 @@
           
         </button>
         <div class="profile-photo">
-          <img src="./images/profile.png" >
+          <img src="<?php
+            if(isset($_SESSION['role']) && $_SESSION['role'] == 'user')
+            {
+                $stmt = $conn->prepare("SELECT profile_picture FROM useraccount WHERE id = ?");
+                $stmt->execute([$_SESSION['userid']]);
+                $pp = $stmt->fetchColumn();
+                echo $pp ?: './images/profile.png';
+            }
+            else
+            {
+                echo './images/profile.png';
+            }
+          ?>" >
         </div>
       </div>
     <!--- end of top ----->
@@ -169,6 +182,16 @@
 
   </div>
 </right>
-</body>
 
+<div style="background:linear-gradient(135deg,#1a1a2e,#323232); color:#fff; padding:35px 20px 25px; text-align:center; margin-top:40px;">
+    <div style="margin-bottom:18px; display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+        <a href="https://web.facebook.com/" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);color:#fff;font-size:20px;transition:0.3s;" onmouseover="this.style.background='#1877f2';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);color:#fff;font-size:20px;transition:0.3s;" onmouseover="this.style.background='#000';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/_harunifrancis/" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);color:#fff;font-size:20px;transition:0.3s;" onmouseover="this.style.background='#e4405f';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/haruni-francis-994827363" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.1);color:#fff;font-size:20px;transition:0.3s;" onmouseover="this.style.background='#0a66c2';this.style.transform='translateY(-3px)'" onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p style="color:rgba(255,255,255,0.5); font-size:13px; letter-spacing:0.5px;">&copy; 2026 OBBMS &mdash; Online Blood Bank Management System</p>
+</div>
+
+</body>
 </html>
