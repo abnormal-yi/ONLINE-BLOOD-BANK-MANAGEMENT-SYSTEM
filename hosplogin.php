@@ -1,4 +1,16 @@
-<?php 
+<?php
+/**
+ * hosplogin.php
+ *
+ * Hospital account login page with email/password authentication.
+ *
+ * Key functionality: Accepts hospital email and password via POST form,
+ * queries the hospitals table to verify credentials, and displays
+ * whether the account was found or not.
+ *
+ * Inline comments explain database query and authentication logic.
+ */
+
 require('config/db_connection.php');
 ?>
 
@@ -9,11 +21,14 @@ require('config/db_connection.php');
    <?php
       require_once('userheader.php');
 
+      // Process hospital login form submission
       if(isset($_POST["login"]))
       {
+        // Capture form credentials
         $email = $_POST['email'];
         $passwd = $_POST['passwd'];
 
+        // Query hospitals table to check if email exists
         $sql = "SELECT HospitalID FROM hospitals WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$email]);

@@ -1,3 +1,12 @@
+<?php
+/*
+ * File: contact.php
+ * Purpose: Contact Us page for OBBMS
+ * Displays a contact form with name, email, phone, and message fields,
+ * along with the organization's contact information and map location.
+ * Key functionality: Static contact/feedback form with contact details.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

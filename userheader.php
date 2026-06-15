@@ -1,3 +1,15 @@
+<?php
+/**
+ * userheader.php
+ *
+ * Sidebar navigation component for authenticated OBBMS users.
+ *
+ * Key functionality: Renders the sidebar with links to Home, User Account
+ * (role-aware: links to useraccount.php for users, login.php for guests),
+ * Hospital Services, About OBBMS, and More Details. Includes CSS and
+ * Material Icons font imports.
+ */
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

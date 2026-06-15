@@ -1,3 +1,18 @@
+<?php
+/**
+ * File: userdata.php
+ * 
+ * Main staff dashboard page for viewing and searching user accounts.
+ * Displays all registered users with their personal and blood group
+ * information. Staff can search by name, email, or phone number,
+ * and navigate to the edit page to update user details.
+ * 
+ * Key functionality:
+ * - Search users by first name, last name, email, or phone
+ * - Display all user accounts in a table with blood group info
+ * - Provides an UPDATE button to edit a user's blood group
+ */
+?>
 <!DOCTYPE html>
     <head>
         <?php
@@ -30,7 +45,7 @@
         </div>
         
         <?php
-            #Show the user accounts with the following specific details
+            // Search for user accounts matching the provided criteria
             if(isset($_POST['searchbutton']))
             {
                 $fname = $_POST['fname'];
@@ -110,8 +125,7 @@
                 }
             }
 
-            # Show all the users data in the database
-            //if(isset($_POST['showall']))
+            // Display all user accounts in the database
             else
             {
                 $sql = "SELECT id, FirstName, LastName, Email, PhoneNumber, DateOfBirth, Gender, BloodGroup, District, Street FROM useraccount";

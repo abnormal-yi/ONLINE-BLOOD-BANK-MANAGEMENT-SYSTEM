@@ -1,3 +1,14 @@
+<?php
+/**
+ * File: hospitaldata.php
+ * Purpose: Hospital management page for OBBMS admin panel.
+ *
+ * This page allows admins to search for hospitals by name, email, or
+ * phone number, and view all hospital records. Each hospital entry
+ * includes an access control button to toggle the registration state
+ * between APPROVED, REVOKED, and PENDING statuses.
+ */
+?>
 <HTMl>
     <head>
         <?php
@@ -25,6 +36,7 @@
         ?>
     
                 <?php
+                    // Handle hospital access control toggle (approve/revoke)
                     if(isset($_POST["control"]))
                     {
                         $hospid = $_POST['hospid'];
@@ -34,6 +46,7 @@
 
                         $statement = $conn->prepare($sql);
 
+                        // Toggle logic: APPROVED -> REVOKED, PENDING -> APPROVED, REVOKED -> APPROVED
                         if($state == "APPROVED")
                         {
                             $statement->execute(["REVOKED", $hospid]);
@@ -56,6 +69,7 @@
                 ?>
 
                 <?php
+        // Handle hospital search by name, email, or phone
         if(isset($_POST['searchbutton']))
         {
             $hospname = $_POST['fname'];
@@ -119,6 +133,7 @@
                                     <INPUt type="hidden" value=<?php echo $data['RegistrationState']; ?> name="state" ></INPUt>
                                     <button type="sublmit" name="control"> 
                                         <?php 
+                                            // Display contextual button label based on current state
                                             if($data['RegistrationState'] == "PENDING" )
                                             {
                                                 ECHO "APPROVE";
@@ -153,6 +168,7 @@
             }
                     
     else {
+        // Display all hospitals when no search is active
         ?>
         <div class="table-design">
         <h2>Hospital Data</h2>
@@ -208,6 +224,7 @@
                             <INPUt type="hidden" value=<?php echo $data['RegistrationState']; ?> name="state" ></INPUt>
                             <button type="sublmit" name="control"> 
                                 <?php 
+                                    // Display contextual button label based on current state
                                     if($data['RegistrationState'] == "PENDING" )
                                     {
                                         ECHO "APPROVE";

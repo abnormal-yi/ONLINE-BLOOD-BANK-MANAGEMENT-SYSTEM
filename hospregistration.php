@@ -1,4 +1,14 @@
 <?php
+/**
+ * hospregistration.php
+ *
+ * Hospital registration request form for new hospital accounts.
+ *
+ * Key functionality: Accepts hospital details (name, email, phone,
+ * district, street, password) via POST, inserts a new record into
+ * the hospitals table with a PENDING registration state.
+ */
+
   require_once('config/db_connection.php');
 ?>
 
@@ -15,8 +25,10 @@
 
     <?php
     
+      // Process hospital registration form submission
       if(isset($_POST["sendrequest"]))
       {
+        // Collect hospital registration form data
         $hospname = $_POST['Hospitalname'];
         $emaildb = $_POST['hospmail'];
         $phonenumberdb = $_POST['phonenumber'];
@@ -25,8 +37,10 @@
         $passworddb = $_POST['passwd'];
         $State = "PENDING";
 
+        // Prepare data array for parameterized insert
         $data = [ $hospname, $emaildb, $phonenumberdb, $districtdb, $streetdb, $State, $passworddb ];
 
+        // Insert new hospital registration request with PENDING state
         $sql = "INSERT INTO hospitals(HospitalName, Email, PhoneNumber, District, Street, RegistrationState, Passwd) 
         VALUES (?, ?, ?, ?, ?, ?, ?)";
         

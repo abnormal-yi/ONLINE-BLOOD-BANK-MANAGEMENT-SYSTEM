@@ -1,3 +1,14 @@
+<?php
+/**
+ * File: managestaff.php
+ * Purpose: User account listing page for OBBMS admin panel.
+ *
+ * This page displays all registered user accounts from the `useraccount`
+ * table in a table format. It includes a search form to filter users by
+ * name, email, or phone number. Despite the filename, this page actually
+ * manages end-user accounts, not staff accounts.
+ */
+?>
 <HTMl>
     <head>
         <?php
@@ -9,11 +20,12 @@
         </title>
     </head>
 
-    <?php // This is where we find specific user accounts ?>
+    <?php // Search form for finding specific user accounts ?>
     <body>
         <?php
             if(isset($_POST['searchbutton']))
             {
+                // Capture search input values
                 $fname = $_POST['fname'];
                 $lname = $_POST['lname'];
                 $email = $_POST['email'];
@@ -37,7 +49,7 @@
         ?>
     </body>
     
-    <?php // This is where we render all the user account table ?>
+    <?php // Render all user account records in a table ?>
     <body>
         <h2>User Accounts</h2>
         <table border="1" cellspacing="0" cellpadding="25"> 
@@ -53,8 +65,7 @@
                 <th>Edit Details</th>
             </tr>
 
-            <?php // Pull all the accounts in the user accounts database
-
+            <?php // Fetch all user accounts from the database
                 $sql = "SELECT FirstName, LastName, Email, PhoneNumber, DateOfBirth, Gender, District, Street FROM useraccount";
 
                 $statement = $conn->prepare($sql);

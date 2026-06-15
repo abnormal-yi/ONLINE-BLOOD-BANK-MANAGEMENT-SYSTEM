@@ -1,3 +1,14 @@
+<?php
+/**
+ * File: addadmin.php
+ * Purpose: Admin registration page for the Online Blood Bank Management System (OBBMS).
+ *
+ * This page provides a registration form for new admin users. It captures
+ * personal details such as first name, last name, username, email, phone,
+ * date of birth, gender, and password. On submission, it inserts the new
+ * admin record into the `admin` table via a prepared PDO statement.
+ */
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +31,7 @@
 
 if(isset($_POST["addstaff"]))
 {
+// Retrieve form input values
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $uname = $_POST['username'];
@@ -31,13 +43,14 @@ $passwd = $_POST['pass'];
 
 $data = [$fname, $lname, $uname, $email, $phone, $gender, $passwd, $dob];
 
+// Insert new admin record into the admin table
 $sql = 'INSERT INTO admin(FirstName, LastName, AdminName, Email, PhoneNumber, Gender,  Passwd, DateOfBirth) 
 VALUE(?,?,?,?,?,?,?,?)';
 
-// commit the transaction
+// Prepare the INSERT statement
 $stmt = $conn->prepare($sql);
 
-// Execute the sql statement
+// Execute the insert with sanitized data
 $result = $stmt->execute($data);
 
 if($result)

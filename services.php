@@ -1,3 +1,14 @@
+<?php
+/**
+ * services.php
+ *
+ * Services listing page showcasing OBBMS features.
+ *
+ * Key functionality: Displays the site header, service cards (Donation
+ * Appointments, About Blood Donation, Donation History), customer
+ * testimonials carousel, feedback form, and membership prompt.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

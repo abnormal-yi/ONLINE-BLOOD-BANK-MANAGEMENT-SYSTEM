@@ -1,3 +1,12 @@
+<?php
+/*
+ * File: index.php
+ * Purpose: Home/Landing page for OBBMS
+ * Main entry point featuring a banner carousel about blood donation awareness,
+ * mission/vision section, customer testimonials, and a feedback form.
+ * Key functionality: Static informational landing page with navigation.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

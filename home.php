@@ -1,3 +1,13 @@
+<?php
+/**
+ * home.php
+ *
+ * Dashboard home page showing summary boxes and a sample data table.
+ *
+ * Key functionality: Displays informational mini-boxes about Dodoma Damu
+ * Salama and a hard-coded table of sample user records for demonstration.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

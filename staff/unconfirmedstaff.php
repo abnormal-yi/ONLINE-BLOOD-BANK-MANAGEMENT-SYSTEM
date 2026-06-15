@@ -1,3 +1,16 @@
+<?php
+/**
+ * File: unconfirmedstaff.php
+ * 
+ * Displays an access denied message for staff members whose
+ * accounts have not yet been approved by an administrator.
+ * Shown when a staff account status is DENIED or PENDING.
+ * 
+ * Key functionality:
+ * - Informs the user their account is unconfirmed
+ * - Provides a link back to the staff login page
+ */
+?>
 <head>
     <title>
         ACCESS DENIED

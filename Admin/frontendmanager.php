@@ -1,3 +1,14 @@
+<?php
+/**
+ * File: frontendmanager.php
+ * Purpose: Frontend design template/preview page for OBBMS admin panel.
+ *
+ * This is a static HTML/CSS demo page used for frontend layout prototyping.
+ * It contains a placeholder sidebar navigation and sample dashboard content
+ * (stat cards and a table) with hardcoded data. No PHP database logic is
+ * executed on this page.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

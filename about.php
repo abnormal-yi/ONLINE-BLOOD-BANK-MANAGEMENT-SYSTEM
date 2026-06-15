@@ -1,3 +1,14 @@
+<?php
+/**
+ * about.php
+ *
+ * Displays the About Us page with the project's mission, vision,
+ * purpose, and acknowledgments to sponsors and contributors.
+ *
+ * Key functionality: Static informational page presenting OBBMS
+ * organizational goals and developer credits.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

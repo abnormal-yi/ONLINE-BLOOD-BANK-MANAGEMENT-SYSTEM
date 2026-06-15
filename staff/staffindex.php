@@ -1,6 +1,22 @@
+<?php
+/**
+ * File: staffindex.php
+ * 
+ * Staff login page for the OBBMS staff panel.
+ * Authenticates staff members against the staffaccounts table
+ * and checks if their account has been confirmed by an admin.
+ * 
+ * Key functionality:
+ * - Redirects already-logged-in staff to the dashboard
+ * - Validates staff username and password against the database
+ * - Checks account confirmation status (GRANTED/DENIED/PENDING)
+ * - Sets session variables on successful login
+ */
+?>
 <HEAD>
     <?php
         session_start();
+        // Redirect if already logged in as staff
         if(isset($_SESSION['role']) && $_SESSION['role'] == 'staff')
         {
             header('location: userdata.php');
@@ -13,6 +29,7 @@
 </HEAD>
 
 <?php
+            // Process the staff login form
             if(isset($_POST['stafflogin']))
             {
                 $username = $_POST['username'];
@@ -20,6 +37,7 @@
 
                 $data = [$username, $passwd];
 
+                // Query staff accounts for matching credentials
                 $sql = "SELECT StaffID, FirstName, LastName, Confirmed FROM staffaccounts WHERE UserName = ? AND Passwd = ?";
 
                 $statement = $conn->prepare($sql);
@@ -32,6 +50,7 @@
                 {
                     foreach($result as $data)
                     {
+                        // Check account confirmation status
                         if($data['Confirmed'] == "GRANTED")
                         {
                             $_SESSION['userid'] = $data['StaffID'];

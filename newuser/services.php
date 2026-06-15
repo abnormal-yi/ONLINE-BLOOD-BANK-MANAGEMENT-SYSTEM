@@ -1,3 +1,13 @@
+<?php
+/*
+ * File: services.php
+ * Purpose: Services overview page for OBBMS
+ * Lists the services offered: donation appointment setup,
+ * blood donation education, and donation history tracking.
+ * Includes a feedback form section.
+ * Key functionality: Static services information page with feedback form.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

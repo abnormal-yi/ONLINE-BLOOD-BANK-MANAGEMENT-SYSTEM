@@ -1,3 +1,14 @@
+<?php
+/**
+ * File: report.php
+ * Purpose: System report page for OBBMS admin panel.
+ *
+ * This page displays a summary report showing aggregate counts for
+ * key system entities: users, hospitals, staff, donations, blood
+ * requests, and feedback submissions. Session protection ensures
+ * only authenticated admins can access this page.
+ */
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +43,7 @@
             </thead>
             <tbody>
                 <?php
+                // Define system metrics to query and display
                 $metrics = [
                     'Total Users' => "SELECT COUNT(*) FROM useraccount",
                     'Total Hospitals' => "SELECT COUNT(*) FROM hospitals",
@@ -40,6 +52,7 @@
                     'Blood Requests' => "SELECT COUNT(*) FROM bloodrequest",
                     'Feedbacks' => "SELECT COUNT(*) FROM feedback",
                 ];
+                // Iterate through metrics and execute each count query
                 foreach($metrics as $label => $sql):
                     $stmt = $conn->query($sql);
                     $count = $stmt->fetchColumn();

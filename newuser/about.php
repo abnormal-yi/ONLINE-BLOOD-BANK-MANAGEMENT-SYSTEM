@@ -1,3 +1,12 @@
+<?php
+/*
+ * File: about.php
+ * Purpose: About Us page for the Online Blood Bank Management System (OBBMS)
+ * Displays information about the development team, project mission & vision,
+ * system purpose, and sponsors/acknowledgements.
+ * Key functionality: Static informational page with navigation and footer.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

@@ -1,3 +1,14 @@
+<?php
+/**
+ * pricing.php
+ *
+ * Pricing and discount promotion page for the OBBMS site.
+ *
+ * Key functionality: A static marketing page displaying a discount
+ * promotion banner and a membership call-to-action section.
+ * Purely front-end template with no PHP processing logic.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

@@ -1,4 +1,18 @@
-
+<?php
+/**
+ * File: staffregistration.php
+ * 
+ * Staff self-registration page for the OBBMS system.
+ * New staff members can submit their details to create an account.
+ * Accounts are created with a PENDING confirmation status and must
+ * be approved by an administrator before access is granted.
+ * 
+ * Key functionality:
+ * - Collects staff personal and account details via form
+ * - Inserts new staff record with Confirmed = 'PENDING'
+ * - Requires admin approval before staff can log in
+ */
+?>
 <html>
     <HEAD>
         <?php
@@ -17,6 +31,7 @@
     <main>
 <?php
 
+    // Process the staff registration form
     if(isset($_POST["addstaff"]))
     {
     $fname = $_POST['fname'];
@@ -32,6 +47,7 @@
 
     $data = [$fname, $lname, $uname, $email, $phone, $gender, $passwd, $conf, $dob];
 
+    // Insert new staff account with PENDING confirmation status
     $sql = 'INSERT INTO staffaccounts(FirstName, LastName, Username, Email, PhoneNumber, Gender,  Passwd, Confirmed, DateOfBirth) 
     VALUE(?,?,?,?,?,?,?,?,?)';
 

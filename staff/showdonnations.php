@@ -1,3 +1,17 @@
+<?php
+/**
+ * File: showdonnations.php
+ * 
+ * Displays blood donation records with date-range filtering.
+ * Staff can search donations between specific dates or view
+ * all donation records in the system.
+ * 
+ * Key functionality:
+ * - Filters donations by start and end date
+ * - Shows all donations when requested
+ * - Renders donation details in a table format
+ */
+?>
 <html>
     <head>
         <?php
@@ -32,7 +46,7 @@
                     
                 <?php
                     
-                    #Show all blood donnations data
+                    // Filter donations by the specified date range
                     if(isset($_POST['searchbutton']))
                     {
                         $fromdate = $_POST['startdate'];
@@ -117,8 +131,7 @@
                 }
                 
                 
-                    #Show all blood donnations data
-                    //if(isset($_POST['alldonnations']))
+                    // Fetch all donation records from the database
                     else {
                         $sql = "SELECT FirstName, LastName, Email, PhoneNumber, Gender, DateOfDonnation,PlaceOfDonnation, District, Street FROM donnations";
                         

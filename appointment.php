@@ -1,3 +1,14 @@
+<?php
+/**
+ * appointment.php
+ *
+ * Static appointment scheduling page for blood donation events.
+ *
+ * Key functionality: Displays a contact form and date/time picker
+ * for users to schedule donation appointments. This is a front-end
+ * template only; no backend processing is implemented.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

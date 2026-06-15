@@ -1,4 +1,14 @@
 <?php
+/**
+ * File: adminlogin.php
+ * Purpose: Admin authentication/login page for OBBMS.
+ *
+ * This page provides a login form for admin users. It validates
+ * the admin's username and password against the `admin` table.
+ * On successful authentication, it sets session variables (userid,
+ * role, name) and redirects to the admin dashboard. If already
+ * logged in, the user is redirected directly to the dashboard.
+ */
     session_start();
     if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin')
     {
@@ -17,11 +27,13 @@
 <?php
             if(isset($_POST['adminlogin']))
             {
+                // Retrieve login credentials from form submission
                 $username = $_POST['username'];
                 $passwd = $_POST['passwd'];
 
                 $data = [$username, $passwd];
 
+                // Query admin table for matching credentials
                 $sql = "SELECT AdminID, FirstName, LastName FROM admin WHERE AdminName = ? AND Passwd = ?";
 
                 $statement = $conn->prepare($sql);
@@ -32,6 +44,7 @@
 
                 if($result)
                 {
+                    // Set session variables and redirect to dashboard
                     foreach($result as $data)
                     {
                         $_SESSION['userid'] = $data['AdminID'];

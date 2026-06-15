@@ -1,3 +1,28 @@
+<?php
+/**
+ * hospreqblood.php
+ *
+ * Hospital blood request form for ordering blood units by type.
+ *
+ * Key functionality: Enforces hospital role authentication via session;
+ * accepts blood quantity selections (A+, A-, B+, B-, AB+, AB-, O+, O-)
+ * via POST and inserts a blood request record into the database.
+ */
+
+session_start();
+require_once('config/db_connection.php');
+require_once('userheader.php');
+
+// Redirect non-hospital users to login page
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'hospital')
+{
+    header('location: login.php');
+    exit();
+}
+
+// Retrieve authenticated hospital's ID from session
+$hospid = $_SESSION['userid'];
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,25 +30,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Blood Request</title>
 
-    <?php
-        session_start();
-        require_once('config/db_connection.php');
-        require_once('userheader.php');
-
-        if(!isset($_SESSION['role']) || $_SESSION['role'] != 'hospital')
-        {
-            header('location: login.php');
-            exit();
-        }
-
-        $hospid = $_SESSION['userid'];
-    ?>
-
 </head>
 
 <?php
+    // Process blood request form submission
     if(isset($_POST['sendreq']))
     {
+        // Collect blood quantity selections for each blood type
         $aplus = $_POST['Aplus'];
         $aminus = $_POST['Aminus'];
         $bplus = $_POST['bplus'];
@@ -34,8 +47,10 @@
         $ominus = $_POST['ominus'];
         $datereq = date("Y/m/d");
 
+        // Prepare data array: hospital ID, blood type quantities, and current date
         $data = [$hospid, $aplus, $aminus, $bplus, $bminus, $abplus, $abminus, $oplus, $ominus, $datereq];
 
+        // Insert blood request record into the database
         $sql = 'INSERT INTO bloodrequest(HospitalID, APos, ANeg, BPos, BNeg, ABPos, ABNeg, OPos, ONeg, ReqDate) 
                 VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         

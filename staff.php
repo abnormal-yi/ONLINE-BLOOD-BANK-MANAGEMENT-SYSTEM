@@ -1,4 +1,14 @@
-<?php 
+<?php
+/**
+ * staff.php
+ *
+ * Staff account search page with a multi-field search form.
+ *
+ * Key functionality: Renders a search form for staff to look up user
+ * accounts by first name, second name, email, or phone number.
+ * The search handler is currently a stub (empty POST handler).
+ */
+
 require_once('config.php');
 ?>
 

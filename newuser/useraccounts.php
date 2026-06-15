@@ -1,3 +1,11 @@
+<?php
+/*
+ * File: useraccounts.php
+ * Purpose: User account login/signup page for OBBMS (static version)
+ * Displays both login and signup forms using static HTML (no server-side processing).
+ * Key functionality: Static account management forms (non-functional).
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

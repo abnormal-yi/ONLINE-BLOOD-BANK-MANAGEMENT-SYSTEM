@@ -1,3 +1,12 @@
+<?php
+/*
+ * File: newindex.php
+ * Purpose: Alternate/Draft landing page for OBBMS
+ * Contains placeholder content with carousel slides, services overview,
+ * developer story section, and contact information.
+ * Key functionality: Static placeholder landing page (appears to be a draft).
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

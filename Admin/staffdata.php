@@ -1,3 +1,14 @@
+<?php
+/**
+ * File: staffdata.php
+ * Purpose: Staff accounts management page for OBBMS admin panel.
+ *
+ * This page displays all staff accounts with their details and current
+ * confirmation status. Admins can toggle staff access between GRANTED,
+ * DENIED, and PENDING states. It also includes a search form (currently
+ * non-functional) for filtering staff records.
+ */
+?>
 <HTMl>
     <head>
         <?php
@@ -24,6 +35,7 @@
             </div>
 
                 <?php
+                // Handle staff access control toggle (grant/deny)
                 if(isset($_POST["accesscontrol"]))
                 {
                     $staffid = $_POST['staffid'];
@@ -33,6 +45,7 @@
 
                     $statement = $conn->prepare($sql);
 
+                    // Toggle logic: GRANTED -> DENIED, DENIED -> GRANTED, PENDING -> GRANTED
                     if($state == "GRANTED")
                     {
                         $statement->execute(["DENIED", $staffid]);
@@ -46,12 +59,11 @@
                     {
                         $statement->execute(["GRANTED", $staffid]);
                     } 
-
-                    //$result = $statement -> fetchAll(PDO::FETCH_ASSOC);
                 }
                 ?>
 
         <?php
+            // Capture search input (search functionality not fully implemented)
             if(isset($_POST['searchbutton']))
             {
                 $fname = $_POST['fname'];
@@ -81,8 +93,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php // Pull all the accounts in the user accounts database
-
+            <?php // Fetch all staff accounts from the database
                 $sql = "SELECT FirstName, LastName, username, Email, PhoneNumber, Gender, Passwd, Confirmed, DateOfBirth, StaffID FROM staffaccounts";
 
                 $statement = $conn->prepare($sql);
@@ -119,6 +130,7 @@
                             <INPUt type="hidden" value=<?php echo $data['Confirmed']; ?> name="state" ></INPUt>
                             <button type="submit" name="accesscontrol"> 
                                 <?php 
+                                    // Display contextual button label based on current confirmation state
                                     if($data['Confirmed'] == "DENIED" )
                                     {
                                         ?><span class="granted"> <?php ECHO "GRANT ACCESS"; ?> </span> <?php

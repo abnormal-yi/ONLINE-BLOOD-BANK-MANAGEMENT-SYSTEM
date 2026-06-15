@@ -1,5 +1,13 @@
-<?php 
-  require_once('config/db_connection.php');
+<?php
+/*
+ * File: login.php
+ * Purpose: User login page for OBBMS
+ * Authenticates users by querying the useraccount table
+ * with email and password credentials.
+ * Key functionality: Form-based login with database authentication.
+ */
+
+require_once('config/db_connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -40,11 +48,13 @@
         <img src="images/banner1.png" width="100%" height="23vh" >
       </div>
    <?php
+      /* Check if login form was submitted */
       if(isset($_POST["login"]))
       {
         $email = $_POST['useremail'];
         $passwd = $_POST['userpasswd'];
-          
+
+        /* Query useraccount table for matching email and password */
         $sql = "SELECT FirstName FROM useraccount WHERE email = ? AND Passwd = ? ";
 
         $statement = $conn->prepare($sql);
@@ -52,7 +62,8 @@
         $statement->execute([$email, $passwd]);
 
         $result = $statement->fetchall(PDO::FETCH_ASSOC);
-        
+
+        /* If matching account found, display welcome message */
         if($result)
         {
             foreach($result as $data)

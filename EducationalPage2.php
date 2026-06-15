@@ -1,3 +1,13 @@
+<?php
+/**
+ * EducationalPage2.php
+ *
+ * Educational page promoting the importance of blood donation.
+ *
+ * Key functionality: Provides static content on why individuals should
+ * donate blood and the positive impact of donation on saving lives.
+ */
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

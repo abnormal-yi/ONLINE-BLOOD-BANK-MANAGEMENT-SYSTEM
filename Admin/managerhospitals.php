@@ -1,5 +1,14 @@
 
 <?php
+/**
+ * File: managerhospitals.php
+ * Purpose: Hospital registration page for OBBMS admin panel.
+ *
+ * This page provides a form for admins to register new hospitals
+ * in the system. It captures the hospital name, email, phone number,
+ * district, and street address, then inserts the record into the
+ * `hospitals` table.
+ */
     require_once('adminheader.php');
     require_once('config/db_admin_connection.php');
 ?>
@@ -14,6 +23,7 @@
 
 if(isset($_POST["savehospital"]))
 {
+    // Capture form data for new hospital
     $name = $_POST['hospitalname'];
     $hospemail = $_POST['hospemail'];
     $hospphone = $_POST['hospphone'];
@@ -22,13 +32,14 @@ if(isset($_POST["savehospital"]))
 
     $data = [$name, $hospemail, $hospphone, $hospdis, $hospstr]; 
 
+    // Insert new hospital record into the hospitals table
     $sql = 'INSERT INTO hospitals(HospitalName, Email, PhoneNumber, District, street)
     VALUE(?,?,?,?,?)';
 
-    // commit the transaction
+    // Prepare the INSERT statement
     $stmt = $conn->prepare($sql);
 
-    // Execute the sql statement
+    // Execute the insert with sanitized data
     $result = $stmt->execute($data);
 
 }

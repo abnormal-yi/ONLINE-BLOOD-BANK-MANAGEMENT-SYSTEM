@@ -1,3 +1,17 @@
+<?php
+/**
+ * File: staffheader.php
+ * 
+ * Header and sidebar navigation template for the OBBMS staff panel.
+ * Renders the logo, sidebar menu with links to all staff pages,
+ * and includes required CSS and Material Icons.
+ * 
+ * Key functionality:
+ * - Displays the OBBMS brand logo
+ * - Provides navigation links to all staff management pages
+ * - Includes a logout link to terminate the session
+ */
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

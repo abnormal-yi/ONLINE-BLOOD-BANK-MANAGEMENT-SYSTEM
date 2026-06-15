@@ -1,3 +1,14 @@
+<?php
+/**
+ * useraccounts.php
+ *
+ * Static login and sign-up template page (front-end only).
+ *
+ * Key functionality: Renders a static HTML template with login and
+ * sign-up form placeholders. This is a design mockup; no backend
+ * processing logic is implemented on this page.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

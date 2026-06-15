@@ -1,3 +1,12 @@
+<?php
+/*
+ * File: staff/staffworkspace.php
+ * Purpose: Staff workspace/dashboard page for OBBMS
+ * Displays a staff-only interface with search functionality
+ * for looking up user records by name.
+ * Key functionality: Static staff workspace page with navigation.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

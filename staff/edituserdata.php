@@ -1,3 +1,17 @@
+<?php
+/**
+ * File: edituserdata.php
+ * 
+ * Allows staff to update a user's blood group information.
+ * Displays the selected user's details and provides a form
+ * to change their blood group from a dropdown selection.
+ * 
+ * Key functionality:
+ * - Retrieves and displays user account details by ID
+ * - Updates the BloodGroup field in the useraccount table
+ * - Redirects back to userdata.php after successful update
+ */
+?>
 <HTMl>
     <head>
         
@@ -17,6 +31,7 @@
         <main>
             
         <?php
+            // Process the blood group update form submission
             if(isset($_POST['updateuserdata']))
             {
                 $newblood = $_POST['blood'];
@@ -35,6 +50,7 @@
         <!-- render the selected account from the database -->
         <?php
         
+            // Retrieve the selected user's full account details for editing
             if(isset($_POST['calluserdata']))
             {
                 $id = $_POST['accid'];

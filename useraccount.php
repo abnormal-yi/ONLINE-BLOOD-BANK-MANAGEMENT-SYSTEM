@@ -1,7 +1,19 @@
 <?php
+/**
+ * useraccount.php
+ *
+ * User profile view and update page with profile picture upload.
+ *
+ * Key functionality: Handles profile field updates (name, phone, district,
+ * street, blood group) and profile picture upload (jpg, jpeg, png, gif, webp
+ * allowed) for authenticated user accounts. Fetches and displays current
+ * user data from the useraccount table.
+ */
+
 session_start();
 require_once('config/db_connection.php');
 
+// Process profile field update form submission
 if(isset($_POST['update_profile']))
 {
     $fname = $_POST['first_name'];
@@ -12,21 +24,26 @@ if(isset($_POST['update_profile']))
     $blood = $_POST['blood_group'];
     $uid = $_SESSION['userid'];
 
+    // Execute the profile update query with sanitized parameters
     $sql = "UPDATE useraccount SET FirstName=?, LastName=?, PhoneNumber=?, District=?, Street=?, BloodGroup=? WHERE id=?";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$fname, $lname, $phone, $district, $street, $blood, $uid]);
     $msg = "Profile updated!";
 }
 
+// Handle profile picture upload if a file was submitted without errors
 if(isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0)
 {
+    // Validate file extension against allowed image types
     $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
     $ext = strtolower(pathinfo($_FILES['profile_pic']['name'], PATHINFO_EXTENSION));
     if(in_array($ext, $allowed))
     {
+        // Generate unique filename and move uploaded file to uploads directory
         $fname = 'user_' . $_SESSION['userid'] . '_' . time() . '.' . $ext;
         $dest = 'uploads/' . $fname;
         move_uploaded_file($_FILES['profile_pic']['tmp_name'], $dest);
+        // Update the user's profile picture path in the database
         $sql = "UPDATE useraccount SET profile_picture=? WHERE id=?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$dest, $_SESSION['userid']]);
@@ -72,6 +89,7 @@ include('userheader.php');
 <body>
 <main>
 <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'user'):
+    // Fetch current user data from the database for display
     $accid = $_SESSION['userid'];
     $sql = "SELECT * FROM useraccount WHERE id = ?";
     $stmt = $conn->prepare($sql);

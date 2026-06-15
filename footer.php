@@ -1,3 +1,14 @@
+<?php
+/**
+ * footer.php
+ *
+ * Footer component template for the OBBMS site.
+ *
+ * Key functionality: Renders the site footer with social media links,
+ * a description of OBBMS, copyright notice, and required JavaScript
+ * file includes. Included by other pages for consistent footer display.
+ */
+?>
       
 <!-- footer section start -->
       <div class="footer_section layout_padding">

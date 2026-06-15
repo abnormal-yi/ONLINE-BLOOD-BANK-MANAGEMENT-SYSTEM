@@ -1,4 +1,14 @@
-
+<?php
+/**
+ * userregistration.php
+ *
+ * User registration form for creating new OBBMS accounts.
+ *
+ * Key functionality: Accepts user details (name, email, phone, gender,
+ * DOB, password) via POST form, validates password confirmation, and
+ * inserts a new record into the useraccount table.
+ */
+?>
 <html>
     <HEAD>
     <?php
@@ -17,8 +27,10 @@ require_once('config/db_connection.php');
     <main>
 <?php
 
+    // Process user registration form submission
     if(isset($_POST["addstaff"]))
     {
+    // Capture registration form data
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
@@ -28,8 +40,10 @@ require_once('config/db_connection.php');
     $passwd = $_POST['passwd'];
     $confpass = $_POST['confpass'];
 
+    // Prepare data array with user fields for insertion
     $data = [$fname, $lname, $email, $phone, $gender, $passwd, $dob];
 
+    // Insert new user account into the database
     $sql = 'INSERT INTO useraccount(FirstName, LastName, Email, PhoneNumber, Gender,  Passwd, DateOfBirth) 
     VALUE(?,?,?,?,?,?,?)';
 

@@ -1,3 +1,17 @@
+<?php
+/**
+ * File: appointmentdata.php
+ * 
+ * Displays all appointment records from the database in a table view.
+ * Lists blood drive event appointments with organization details,
+ * event information, and status controls (ACCEPT/CANCEL).
+ * 
+ * Key functionality:
+ * - Fetches all appointments from the database
+ * - Renders a table with appointment details
+ * - Dynamically displays ACCEPT or CANCEL button based on current state
+ */
+?>
 <!DOCTYPE html>
     <head>
         <?php
@@ -30,7 +44,7 @@
         </div>
         
         <?php
-        
+        // Fetch all appointment records from the database
                 $sql = "SELECT appid, OrganizationName, EventName, RepName, DateOfEvent, Ward, street, Email, PhoneNumber, State FROM appointments";
 
                 $statement = $conn->prepare($sql);

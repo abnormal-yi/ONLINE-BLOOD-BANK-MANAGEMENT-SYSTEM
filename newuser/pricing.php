@@ -1,3 +1,11 @@
+<?php
+/*
+ * File: pricing.php
+ * Purpose: Pricing/Discount information page for OBBMS
+ * Displays promotional discount information and membership call-to-action.
+ * Key functionality: Static promotional page with discount banner.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

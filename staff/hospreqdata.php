@@ -1,4 +1,17 @@
 <?php
+/**
+ * File: hospreqdata.php
+ * 
+ * Manages hospital blood requests for the staff panel.
+ * Displays all blood requests from hospitals with quantities
+ * for each blood type and allows staff to update request status.
+ * 
+ * Key functionality:
+ * - Lists all blood requests with blood type breakdowns
+ * - Retrieves hospital names via HospitalID foreign key
+ * - Updates request status (NEW -> PROCESSING -> DELIVERED)
+ * - Shows status-dependent action button text
+ */
     
     require_once('config/db_staff_connection.php');
     require_once('staffheader.php');
@@ -9,10 +22,12 @@
 <body>
 
 <?php
+    // Process the blood request status update
     if(isset($_POST['processrequest']))
     {
         $reqid = $_POST['id'];
 
+        // Fetch current request status from the database
         $sql = "SELECT ReqStatus FROM bloodrequest WHERE ReqID = ?";
 
         $statement = $conn->prepare($sql);
@@ -69,7 +84,7 @@
 </thead>
                     </tbody>
 
-            <?php // Pull all the accounts in the user accounts database
+            <?php // Fetch all blood requests from the database
 
                 $sql = "SELECT ReqID, HospitalID, APos, ANeg, BPos, BNeg, ABPos, ABNeg, OPos, ONeg, ReqDate, ReqStatus FROM bloodrequest";
 
@@ -88,6 +103,7 @@
                 $id = $data['ReqID'];
                 $hospid = $data['HospitalID'];
 
+                // Look up the hospital name using the HospitalID foreign key
                 $sql = "SELECT HospitalName, RegistrationState FROM hospitals WHERE HospitalID = ?";
 
                 $statement = $conn->prepare($sql);

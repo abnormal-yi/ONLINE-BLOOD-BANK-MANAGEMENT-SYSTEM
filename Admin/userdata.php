@@ -1,3 +1,14 @@
+<?php
+/**
+ * File: userdata.php
+ * Purpose: User accounts management page for OBBMS admin panel.
+ *
+ * This page allows admins to search for registered users by name,
+ * email, or phone number, and to view all user accounts. It displays
+ * user details including name, contact info, blood group, district,
+ * and street address.
+ */
+?>
 <!DOCTYPE html>
     <head>
         <?php
@@ -30,7 +41,7 @@
         </div>
         
         <?php
-            #Show the user accounts with the following specific details
+            # Show specific user accounts matching search criteria
             if(isset($_POST['searchbutton']))
             {
                 $fname = $_POST['fname'];
@@ -38,6 +49,7 @@
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
 
+                // Search user accounts by name, email, or phone
                 $sql = "SELECT id, FirstName, LastName, Email, PhoneNumber, DateOfBirth, Gender, BloodGroup, District, Street FROM useraccount WHERE FirstName LIKE ? OR LastName LIKE ?
                         OR Email LIKE ? OR PhoneNumber LIKE ?";
 
@@ -104,10 +116,11 @@
                 }
             }
 
-            # Show all the users data in the database
+            # Show all user data when no search is active
             //if(isset($_POST['showall']))
             else
             {
+                // Fetch all user accounts from the database
                 $sql = "SELECT id, FirstName, LastName, Email, PhoneNumber, DateOfBirth, Gender, BloodGroup, District, Street FROM useraccount";
 
                 $statement = $conn->prepare($sql);

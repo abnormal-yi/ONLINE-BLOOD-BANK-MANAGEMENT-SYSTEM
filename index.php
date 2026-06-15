@@ -1,3 +1,14 @@
+<?php
+/**
+ * index.php
+ *
+ * Main dashboard landing page for the Online Blood Bank Management System.
+ *
+ * Key functionality: Initializes the user session, loads the sidebar
+ * navigation (userheader.php) and database connection, then displays
+ * the system dashboard with a welcome message and role-based navigation.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

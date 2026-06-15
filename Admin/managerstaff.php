@@ -1,5 +1,18 @@
 
 <?php
+/**
+ * File: managerstaff.php
+ * Purpose: Staff registration page for OBBMS admin panel.
+ *
+ * This page provides a form for admins to register new staff members.
+ * It captures the staff's first name, last name, email, phone number,
+ * date of birth, gender, district, and street, then inserts the record
+ * into the appropriate table.
+ *
+ * NOTE: The INSERT query appears to have a column/table mismatch and
+ * uses incorrect bracket syntax for $_POST access. This may require
+ * debugging before use.
+ */
     require_once('adminheader.php');
     require_once('config/db_admin_connection.php');
 ?>
@@ -14,6 +27,7 @@
 
 if(isset($_POST["addstaff"]))
 {
+    // Retrieve staff registration form data
     $fname = $_POST(['fname']);
     $lname = $_POST(['lname']);
     $email = $_POST(['email']);
@@ -24,12 +38,13 @@ if(isset($_POST["addstaff"]))
     $street = $_POST(['street']);
 
     $data = [$fname, $lname, $email, $phone, $gender, $dob, $district, $street]; 
+    // Insert new staff record
     $sql = 'INSERT INTO hospitals(FirstName, LastName, Email, PhoneNumber, DateOfBirth, Gender, District, street, HospitalID) VALUE(?,?,?,?,?)';
 
-    // commit the transaction
+    // Prepare the INSERT statement
     $stmt = $conn->prepare($sql);
 
-    // Execute the sql statement
+    // Execute the insert with sanitized data
     $result = $stmt->execute($data);
 }
 ?>

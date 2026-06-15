@@ -1,3 +1,14 @@
+<?php
+/**
+ * File: showdonnations.php
+ * Purpose: Blood donations display page for OBBMS admin panel.
+ *
+ * This page allows admins to view all blood donation records. It
+ * supports filtering by date range (start date to end date) and can
+ * also display all donations. Results are shown in a table with donor
+ * details including name, contact, gender, donation date, and location.
+ */
+?>
 <html>
     <head>
         <?php
@@ -32,7 +43,7 @@
                     
                 <?php
                     
-                    #Show all blood donnations data
+                    # Handle date-filtered donation search
                     if(isset($_POST['searchbutton']))
                     {
                         $fromdate = $_POST['startdate'];
@@ -41,6 +52,7 @@
                             {
                                 $data = [$fromdate, $todate];
 
+                                // Query donations within the specified date range
                                 $sql = "SELECT FirstName, LastName, Email, PhoneNumber, Gender, DateOfDonnation,PlaceOfDonnation, District, Street FROM donnations 
                                         WHERE DateOfDonnation >= ? AND DateOfDonnation <= ?";
                                 
@@ -117,9 +129,10 @@
                 }
                 
                 
-                    #Show all blood donnations data
+                    # Show all donations when no date filter is applied
                     //if(isset($_POST['alldonnations']))
                     else {
+                        // Fetch all donation records
                         $sql = "SELECT FirstName, LastName, Email, PhoneNumber, Gender, DateOfDonnation,PlaceOfDonnation, District, Street FROM donnations";
                         
                         $statement = $conn->prepare($sql);

@@ -1,4 +1,13 @@
-<?php 
+<?php
+/**
+ * File: hospreq.php
+ * Purpose: Hospital blood request viewer for OBBMS admin panel.
+ *
+ * This page displays all blood type requests submitted by hospitals.
+ * It shows the requested quantities for each blood type (A+, A-, B+,
+ * B-, AB+, AB-, O+, O-) along with the request date. A total row is
+ * rendered at the bottom of the table.
+ */
     require_once('config/db_admin_connection.php');
     require_once('adminheader.php');
 ?>
@@ -22,8 +31,7 @@
                         <th>Request Date</th>
                     </tr>
 
-                    <?php // Pull all the accounts in the user accounts database
-
+                    <?php // Fetch all blood requests from hospitals
                         $sql = "SELECT HospitalID, APos, ANeg, BPos, BNeg, ABPos, ABNeg, OPos, ONeg, ReqDate FROM bloodrequest";
 
                         $statement = $conn->prepare($sql);
@@ -63,7 +71,7 @@
                         }
 
 
-                        
+                        // Fetch all blood requests again for totals calculation
                         $sql = "SELECT HospitalID, APos, ANeg, BPos, BNeg, ABPos, ABNeg, OPos, ONeg, ReqDate FROM bloodrequest";
 
                         $statement = $conn->prepare($sql);

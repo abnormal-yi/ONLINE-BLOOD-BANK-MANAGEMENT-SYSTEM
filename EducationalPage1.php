@@ -1,3 +1,14 @@
+<?php
+/**
+ * EducationalPage1.php
+ *
+ * Educational page about Dodoma Damu Salama and the National Blood
+ * Transfusion Service (NBTS) history in Tanzania.
+ *
+ * Key functionality: Presents static informational content on the
+ * establishment and mission of the regional blood transfusion program.
+ */
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

@@ -1,4 +1,12 @@
-<?php 
+<?php
+/*
+ * File: staff.php
+ * Purpose: Staff account search page for OBBMS
+ * Provides a search form for staff to look up user accounts
+ * by name, email, or phone number.
+ * Key functionality: Staff-facing account search with database lookup.
+ */
+
 require_once('config.php');
 ?>
 
@@ -37,9 +45,10 @@ require_once('config.php');
    <body>
 
    <?php
+      /* Check if staff search form was submitted (handler not yet implemented) */
       if(isset($_POST["search"]))
       {
-        
+
       }
    ?>
 

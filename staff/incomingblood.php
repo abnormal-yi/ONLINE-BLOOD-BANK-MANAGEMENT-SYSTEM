@@ -1,3 +1,17 @@
+<?php
+/**
+ * File: incomingblood.php
+ * 
+ * Provides a form for staff to record donation information
+ * from unregistered donors. Captures donor personal details
+ * and saves them to the donnations table.
+ * 
+ * Key functionality:
+ * - Collects donor name, contact, gender, date, place, and location
+ * - Validates that a gender option is selected
+ * - Inserts donation record into the database
+ */
+?>
 <html>
     <head>
         <?php
@@ -10,6 +24,7 @@
     </head>
 
     <?php
+      // Process the donation form submission
       if(isset($_POST["savedata"]))
       {
         $fnamedb = $_POST['firstname'];
@@ -22,6 +37,7 @@
         $districtdb = $_POST['dis'];
         $streetdb = $_POST['str'];
 
+        // Validate gender selection
         if($genderdb == "Gender")
         {
             echo "Please select gender.";

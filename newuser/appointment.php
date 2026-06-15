@@ -1,3 +1,12 @@
+<?php
+/*
+ * File: appointment.php
+ * Purpose: Appointment scheduling page for blood donation events
+ * Displays a form for users to set up donation appointments including
+ * name, contact details, date range, and time range.
+ * Key functionality: Static appointment request form with header/footer.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

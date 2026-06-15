@@ -1,4 +1,14 @@
-
+<?php
+/**
+ * setappointment.php
+ *
+ * Group blood donation appointment scheduling form.
+ *
+ * Key functionality: Accepts organization/group details via POST form,
+ * inserts the appointment request into the appointments table with
+ * a PENDING state, and confirms success or failure to the user.
+ */
+?>
 <html>
     <HEAD>
     <?php
@@ -17,8 +27,10 @@ require_once('config/db_connection.php');
     <main>
 <?php
 
+    // Process appointment form submission
     if(isset($_POST["addstaff"]))
     {
+    // Collect appointment details from form fields
     $orgname = $_POST['orgname'];
     $ename = $_POST['ename'];
     $rname = $_POST['rname'];
@@ -29,8 +41,10 @@ require_once('config/db_connection.php');
     $ward = $_POST['ward'];
     $state = 'PENDING';
 
+    // Prepare data array for the appointment insert
     $data = [$orgname, $ename, $rname, $dob,  $ward,  $street, $email, $phone, $state];
 
+    // Insert new appointment record with PENDING state
     $sql = 'INSERT INTO appointments(OrganizationName, EventName, RepName, DateOfEvent, Ward, street, Email, PhoneNumber, State) 
     VALUE(?,?,?,?,?,?,?,?,?)';
 

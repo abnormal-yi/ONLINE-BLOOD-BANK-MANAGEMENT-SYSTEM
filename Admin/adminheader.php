@@ -1,3 +1,15 @@
+<?php
+/**
+ * File: adminheader.php
+ * Purpose: Admin panel sidebar/navigation header template for OBBMS.
+ *
+ * This file renders the persistent left sidebar navigation used across
+ * all admin dashboard pages. It includes links to the dashboard, user data,
+ * staff data, hospital data, hospital requests, donations, feedback,
+ * reports, and logout. It also queries the database to display pending
+ * notification counts for staff accounts and hospital registrations.
+ */
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +49,7 @@
                 <a href="staffdata.php">
                     <span class= "material-icons-sharp" > * </span>
                     <h3>STAFF DATA</h3><?php
+                        // Count pending staff accounts for notification badge
                         $acctype = "PENDING";
                         $data;
                         $sql = "SELECT count(*) FROM staffaccounts WHERE Confirmed = ?";
@@ -57,6 +70,7 @@
                 <a href="hospitaldata.php">
                     <span class= "material-icons-sharp" > * </span>
                     <h3> HOSPITAL DATA </h3><?php
+                        // Count pending hospital registrations for notification badge
                         $acctype = "PENDING";
                         $data;
                         $sql = "SELECT count(*) FROM hospitals WHERE RegistrationState = ?";

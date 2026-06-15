@@ -1,5 +1,13 @@
-<?php 
-    require_once('config/db_connection.php');
+<?php
+/*
+ * File: signup.php
+ * Purpose: User registration page for OBBMS
+ * Handles new user account creation by inserting personal details
+ * (name, email, password, phone, gender) into the useraccount table.
+ * Key functionality: Form-based signup with database insert.
+ */
+
+require_once('config/db_connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +46,10 @@
 
   <div>
     <?php
+      /* Check if signup form was submitted */
       if(isset($_POST["createaccount"]))
       {
+        /* Capture form input values */
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['useremail'];
@@ -48,10 +58,12 @@
         $gender = $_POST['gender'];
         $bloodgroup = "not added";
 
+        /* Insert new user record into useraccount table */
         $sql = "INSERT INTO useraccount ( FirstName, LastName, Email, PhoneNumber,Gender, Passwd) VALUES (?,?,?,?,?,?)";
         $stmntInsert = $conn->prepare($sql);
         $result = $stmntInsert->execute([$firstname, $lastname, $email, $phonenumber, $gender, $passwd]);
-        
+
+        /* Confirm success or failure */
         if($result)
         {
           echo 'succesfully saved';

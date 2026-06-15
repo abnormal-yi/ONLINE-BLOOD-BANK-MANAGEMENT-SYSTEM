@@ -1,4 +1,15 @@
 <?php
+/**
+ * signup.php
+ *
+ * Public user registration page for creating new accounts.
+ *
+ * Key functionality: Accepts user details (name, email, phone, DOB,
+ * gender, district, street, password) via POST form, inserts a new
+ * record into the useraccount table, and redirects to index.php on
+ * successful registration.
+ */
+
   require_once('config/db_connection.php');
 ?>
 
@@ -39,8 +50,10 @@
   <div>
     <?php
     
+      // Process user sign-up form submission
       if(isset($_POST["createaccount"]))
       {
+        // Capture all user registration form inputs
         $fnamedb = $_POST['firstname'];
         $lnamedb = $_POST['lastname'];
         $emaildb = $_POST['usermail'];
@@ -54,8 +67,10 @@
         $acctype = "User";
         $accid = "notadded";
 
+        // Prepare data array with all user fields for insertion
         $data = [ $fnamedb, $lnamedb, $emaildb, $phonenumberdb, $dobdb, $genderdb, $districtdb, $streetdb, $blood, $acctype, $passworddb ];
 
+        // Insert new user record into the useraccount table
         $sql = "INSERT INTO useraccount(FirstName, LastName, Email, PhoneNumber, DateOfBirth, Gender, District, Street, BloodGroup, AccountType, Passwd) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         

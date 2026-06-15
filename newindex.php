@@ -1,3 +1,15 @@
+<?php
+/**
+ * newindex.php
+ *
+ * Landing/homepage with carousel slider, services overview, about section,
+ * testimonials, and contact form.
+ *
+ * Key functionality: Presents the public-facing homepage with a Bootstrap
+ * carousel, service highlights, customer testimonials, a contact section,
+ * and a membership call-to-action. Purely front-end with no PHP processing.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>

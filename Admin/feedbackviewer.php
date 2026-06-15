@@ -1,3 +1,13 @@
+<?php
+/**
+ * File: feedbackviewer.php
+ * Purpose: User feedback review page for OBBMS admin panel.
+ *
+ * This page displays all user-submitted feedback in a table, sorted
+ * by most recent first. Admins can delete individual feedback entries.
+ * Session protection ensures only authenticated admins can access.
+ */
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +26,7 @@
         }
     ?>
     <?php
+        // Handle feedback deletion request
         if(isset($_POST['delete']))
         {
             $id = $_POST['id'];
@@ -30,7 +41,7 @@
     <h1> FEEDBACK REVIEW </h1>
     
     <?php
-
+    // Fetch all feedback entries ordered by most recent first
     $sql = 'SELECT FeedbackID, FullName, Email, Title, Message, PDate FROM feedback ORDER BY FeedbackID DESC';
 
     $statement = $conn->prepare($sql);

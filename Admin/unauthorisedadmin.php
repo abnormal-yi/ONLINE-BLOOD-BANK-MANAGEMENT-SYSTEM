@@ -1,3 +1,13 @@
+<?php
+/**
+ * File: unauthorisedadmin.php
+ * Purpose: Access denied page for OBBMS admin panel.
+ *
+ * This page is displayed when a non-admin user attempts to access
+ * admin-only sections. It shows a denial message with a link back
+ * to the admin login page.
+ */
+?>
 <head>
     <title>
         ACCESS DENIED

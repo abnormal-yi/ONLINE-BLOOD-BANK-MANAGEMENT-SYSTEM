@@ -1,3 +1,14 @@
+<?php
+/**
+ * accountdetails.php
+ *
+ * Displays detailed user account information by ID.
+ *
+ * Key functionality: Accepts a user ID via POST, queries the useraccount
+ * table, and renders the user's personal details (name, email, phone,
+ * gender, district, street, blood group).
+ */
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +29,7 @@
         {
             $accid = $_POST['accid'];
 
+            // Fetch user details from the useraccount table by the provided ID
             $sql = "SELECT FirstName, LastName, Email, PhoneNumber, DateOfBirth, Gender, District, Street, BloodGroup FROM useraccount WHERE id = ?";
 
             $statement = $conn->prepare($sql);

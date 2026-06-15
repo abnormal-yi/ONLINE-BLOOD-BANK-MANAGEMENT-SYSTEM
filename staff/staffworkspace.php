@@ -1,4 +1,17 @@
-<?php 
+<?php
+/**
+ * File: staffworkspace.php
+ * 
+ * Staff donation entry form for recording donor information.
+ * Captures details of blood donors and saves them to the
+ * donnations table in the database.
+ * 
+ * Key functionality:
+ * - Form to enter donor personal and contact information
+ * - Records donation date, place, district, and street
+ * - Inserts donation record into the donnations table
+ */
+ 
  require_once('config/db_staff_connection.php');
  require_once('staffheader.php');
  
@@ -9,6 +22,7 @@
 <html lang="en">
 
     <?php
+      // Process the donation form submission
       if(isset($_POST["savedata"]))
       {
         $fnamedb = $_POST['firstname'];

@@ -1,3 +1,14 @@
+<?php
+/**
+ * header.php
+ *
+ * Header and navigation component template for the OBBMS public site.
+ *
+ * Key functionality: Renders the site title banner, navigation bar with
+ * links to Home, Services, About, Account, Sign Up, and Contact pages,
+ * along with CSS and meta includes.
+ */
+?>
 <!-- body -->
     <head>
       <!-- basic -->

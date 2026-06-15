@@ -1,3 +1,13 @@
+<?php
+/**
+ * EducationalPage3.php
+ *
+ * Educational page covering blood donation eligibility and deferral criteria.
+ *
+ * Key functionality: Lists behavioral and medical conditions that may
+ * defer or permanently disqualify individuals from donating blood.
+ */
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

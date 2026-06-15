@@ -1,3 +1,13 @@
+<?php
+/**
+ * feedback.php
+ *
+ * Simple feedback page template that includes the site header.
+ *
+ * Key functionality: Intended to display a feedback interface, currently
+ * an empty shell that requires the header component.
+ */
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
