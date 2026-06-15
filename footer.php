@@ -10,7 +10,7 @@
               <li><a href="#"><img src="images/instagram-icon.png"></a></li>
             </ul>
           </div>
-          <p class="lorem_ipsum_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate</p>
+          <p class="lorem_ipsum_text">OBBMS connects blood donors, recipients, hospitals, and administrators through a centralized platform. Our mission is to streamline blood donation and distribution, ensuring timely access to safe blood for those in need.</p>
         </div>
       </div>
 <!-- footer section end -->
