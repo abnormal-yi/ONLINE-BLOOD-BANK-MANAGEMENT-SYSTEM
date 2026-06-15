@@ -14,14 +14,13 @@ require('config/db_connection.php');
         $email = $_POST['email'];
         $passwd = $_POST['passwd'];
 
-        $sql = "SELECT HospitalID FROM hospitals WHERE email = ". $email . ")";
-        
-        // use exec() because no results are returned
-        $statement = $conn->execute($sql);
-        
-        if($result)
+        $sql = "SELECT HospitalID FROM hospitals WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$email]);
+
+        if($stmt->fetch())
         {
-          echo 'Accoount Found';
+          echo 'Account Found';
         }
         else
         {

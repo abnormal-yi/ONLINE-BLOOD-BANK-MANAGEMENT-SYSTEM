@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
 $servername = "127.0.0.1";
 $dbname = "test_obbms";
 $username = "yichang";
@@ -12,7 +14,7 @@ try
 
 catch(PDOException $e)
 {
-    echo "Connection failed: " . $e->getMessage();
+    echo "Connection failed.";
 }
 
 ?> 
