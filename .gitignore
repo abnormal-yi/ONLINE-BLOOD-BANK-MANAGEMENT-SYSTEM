@@ -1,0 +1,24 @@
+# VS Code / Visual Studio
+.vs/
+.vscode/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Uploaded user content (not the .htaccess)
+uploads/*.jpg
+uploads/*.jpeg
+uploads/*.png
+uploads/*.gif
+uploads/*.webp
+!uploads/.htaccess
+
+# IDE files
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
